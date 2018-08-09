@@ -28,6 +28,7 @@ Connection conn= null;
 
 } catch (SQLException ex) {
     // handle any errors
+    //Para que nos dia que error hemos tenido 
     System.out.println("SQLException: " + ex.getMessage());
     System.out.println("SQLState: " + ex.getSQLState());
     System.out.println("VendorError: " + ex.getErrorCode());

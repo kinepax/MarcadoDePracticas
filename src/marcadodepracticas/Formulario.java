@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package marcadodepracticas;
 
 /**
@@ -80,11 +76,14 @@ public class Formulario extends javax.swing.JFrame {
 
     private void jEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEntradaActionPerformed
         // TODO add your handling code here:
-        tiempo.tomarFecha();
-        tiempo.iniciarTiempo();
+        tiempo.tomarFecha(); //Toma la fecha del dia de hoy
+        tiempo.iniciarTiempo(); //Marca la hora en el momento accionado
     }//GEN-LAST:event_jEntradaActionPerformed
 
     private void jSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSalidaActionPerformed
+        /*Se llama a la funcion finTiempo ,marca la hora que termina
+        y a su vez calcula el tiempo        
+        */
         tiempo.finTiempo();
     }//GEN-LAST:event_jSalidaActionPerformed
 

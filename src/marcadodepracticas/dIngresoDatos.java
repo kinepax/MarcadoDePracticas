@@ -60,10 +60,12 @@ public class dIngresoDatos {
         try {
             ConexionBd con = new ConexionBd();
             Connection conexion = con.conexion();
-           
+           //Se invoca el procedimiento almacenado
             CallableStatement sp= conexion.prepareCall("CALL contar_productos(?,?)");
+            
         } catch (SQLException ex) {
             Logger.getLogger(dIngresoDatos.class.getName()).log(Level.SEVERE, null, ex);
+            //Comentario
         }
        
         
