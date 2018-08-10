@@ -75,14 +75,14 @@ public class dIngresoDatos {
            sp.execute();
            Statement stmt = conexion.createStatement();       
             
-            ResultSet getKeyRs = stmt.executeQuery("SELECT LAST_INSERT_ID()");
+            ResultSet resultado = stmt.executeQuery("SELECT LAST_INSERT_ID()");
             
-                if (getKeyRs != null) {
-                   if (getKeyRs.next()) {
-                       int lastInsertedId=getKeyRs.getInt(1);
+                if (resultado != null) {
+                   if (resultado.next()) {
+                       int lastInsertedId=resultado.getInt(1);
                        System.out.println(lastInsertedId);
                     }
-                    getKeyRs.close();
+                    resultado.close();
                 }
             
             conexion.close();
