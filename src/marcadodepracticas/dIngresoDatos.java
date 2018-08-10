@@ -17,8 +17,9 @@ public class dIngresoDatos {
     public Date diaHoy;
     public Time horaEntrada;
     public Time horaSalida;
-    public Time tiempoTotal;    
-
+    public Time tiempoTotal;
+    public int idIngresado;
+    
     public dIngresoDatos(Date diaHoy, Time horaEntrada, Time horaSalida, Time tiempoTotal) {
         this.diaHoy = diaHoy;
         this.horaEntrada = horaEntrada;
@@ -79,8 +80,8 @@ public class dIngresoDatos {
             
                 if (resultado != null) {
                    if (resultado.next()) {
-                       int lastInsertedId=resultado.getInt(1);
-                       System.out.println(lastInsertedId);
+                       idIngresado=resultado.getInt(1);
+                       System.out.println(idIngresado);
                     }
                     resultado.close();
                 }
@@ -95,6 +96,34 @@ public class dIngresoDatos {
         }
        
         
+    }
+    
+    public void ingresarSalida(){
+        
+               ConexionBd con = new ConexionBd();
+            Connection conexion = con.conexion();
+        try {
+            
+           //Se invoca el procedimiento almacenado
+            CallableStatement sp= conexion.prepareCall("CALL spInsertarSalida(?,?,?)");
+            
+           
+           sp.setTime(1, horaEntrada);
+           sp.setTime(2, tiempoTotal);
+           sp.setInt(3, idIngresado);
+           sp.execute();
+          // Statement stmt = conexion.createStatement();       
+            
+        
+            
+            conexion.close();
+            
+            
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(dIngresoDatos.class.getName()).log(Level.SEVERE, null, ex);
+            //Comentario
+        }
     }
     
     

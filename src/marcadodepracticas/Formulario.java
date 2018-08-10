@@ -78,6 +78,7 @@ public class Formulario extends javax.swing.JFrame {
         // TODO add your handling code here:
         tiempo.tomarFecha(); //Toma la fecha del dia de hoy
         tiempo.iniciarTiempo(); //Marca la hora en el momento accionado
+        jEntrada.setEnabled(false);
     }//GEN-LAST:event_jEntradaActionPerformed
 
     private void jSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSalidaActionPerformed

@@ -59,10 +59,27 @@ dIngresoDatos ingreso = new dIngresoDatos();
         finalTime = LocalTime.now(); //Toma la hora al momento de ser llamada
         System.out.println(finalTime);
           int hours = (int) ChronoUnit.HOURS.between(finalTime, initialTime);
+          long horastime = ChronoUnit.HOURS.between(finalTime, initialTime);
           //La diferencia de horas entre el final y el inicial
           int minutos= (int) ChronoUnit.MINUTES.between(finalTime, initialTime);
-          //La diferencia de Minutos de la hora final a la hora inicial
           int segundos= (int) ChronoUnit.SECONDS.between(initialTime, finalTime);
+          //La diferencia de Minutos de la hora final a la hora inicial
+        
+          try {
+               String horastr= String.valueOf(hours);
+          String minutostr=String.valueOf(minutos);
+        String diferenciaString= String.valueOf(hours);
+              Time diferencia=Time.valueOf(diferenciaString);
+              //String diferenciaString= String.format("%02d:%02d:%02d",horastr,minutostr,segundos);
+         //     System.out.println();
+          //  Time diferencia= Time.valueOf( String.format("%02d%02d",hours,minutos));
+            
+          ingreso.tiempoTotal=diferencia;
+        } catch (Exception e) {
+              System.out.println(e);
+        }
+          
+          
           //La diferencia de segundos hora inicial y final
           // Termina impriendo en pantalla
                 System.out.println(hours);
