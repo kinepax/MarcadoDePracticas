@@ -1,6 +1,8 @@
 
 package marcadodepracticas;
 //import java.time.LocalDate;
+import java.sql.Date;
+import java.sql.Time;
 import java.time.Duration;
 import java.time.LocalDateTime; //Para tener la hora y fecha actual
 import java.time.LocalTime; //Para ver la hora actual
@@ -14,7 +16,9 @@ public static LocalTime initialTime;
 public static LocalTime finalTime;
 
 public static LocalDateTime prueba;
-public static LocalDate diahoy;
+public static LocalDate diadehoy;
+dIngresoDatos ingreso = new dIngresoDatos();
+
     
     
     public static void main(String[] args) {
@@ -35,14 +39,20 @@ public static LocalDate diahoy;
     
     public void tomarFecha(){
         
-        diahoy= LocalDate.now(); //Esta funcion hace tomar el dia de hoy
-        System.out.println(diahoy);
+        diadehoy= LocalDate.now(); //Esta funcion hace tomar el dia de hoy
+        //System.out.println(diadehoy);
+        ingreso.diaHoy=Date.valueOf(diadehoy);
+        System.out.println(ingreso.diaHoy);
+       
         
     }
     public void iniciarTiempo(){
         
         initialTime = LocalTime.now(); //Toma la hora del momento de ser llamada
+       // System.out.println(initialTime);
+        ingreso.horaEntrada=(Time.valueOf(initialTime));
         System.out.println(initialTime);
+        ingreso.ingresarHora();
         //prueba= LocalDateTime.now();
     }
     public void finTiempo(){

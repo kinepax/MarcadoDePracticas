@@ -15,7 +15,7 @@ Connection conn= null;
      //El problema que teniamos era por el utc de la bd
      // SET GLOBAL time_zone = '-5:00'
     conn =
-       DriverManager.getConnection("jdbc:mysql://localhost/test?"+ 
+       DriverManager.getConnection("jdbc:mysql://localhost/marcadopracticasbd?"+ 
                                    "user=root&password="
                );
 
