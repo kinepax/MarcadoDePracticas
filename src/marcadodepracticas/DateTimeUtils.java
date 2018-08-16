@@ -50,7 +50,7 @@ dIngresoDatos ingreso = new dIngresoDatos();
         
         initialTime = LocalTime.now(); //Toma la hora del momento de ser llamada
        // System.out.println(initialTime);
-        ingreso.horaEntrada=(Time.valueOf(initialTime));
+        ingreso.setHoraEntrada(Time.valueOf(initialTime));
         System.out.println(initialTime);
         ingreso.ingresarHora();
         //prueba= LocalDateTime.now();
@@ -58,32 +58,23 @@ dIngresoDatos ingreso = new dIngresoDatos();
     public void finTiempo(){
         finalTime = LocalTime.now(); //Toma la hora al momento de ser llamada
         System.out.println(finalTime);
+        ingreso.setHoraSalida(Time.valueOf(finalTime));
+        
           int hours = (int) ChronoUnit.HOURS.between(finalTime, initialTime);
-          long horastime = ChronoUnit.HOURS.between(finalTime, initialTime);
           //La diferencia de horas entre el final y el inicial
           int minutos= (int) ChronoUnit.MINUTES.between(finalTime, initialTime);
-          int segundos= (int) ChronoUnit.SECONDS.between(initialTime, finalTime);
           //La diferencia de Minutos de la hora final a la hora inicial
-        
-          try {
-               String horastr= String.valueOf(hours);
-          String minutostr=String.valueOf(minutos);
-        String diferenciaString= String.valueOf(hours);
-              Time diferencia=Time.valueOf(diferenciaString);
-              //String diferenciaString= String.format("%02d:%02d:%02d",horastr,minutostr,segundos);
-         //     System.out.println();
-          //  Time diferencia= Time.valueOf( String.format("%02d%02d",hours,minutos));
-            
-          ingreso.tiempoTotal=diferencia;
-        } catch (Exception e) {
-              System.out.println(e);
-        }
-          
-          
+          int segundos= (int) ChronoUnit.SECONDS.between(initialTime, finalTime);
           //La diferencia de segundos hora inicial y final
           // Termina impriendo en pantalla
+          String total=String.valueOf(hours)+":"+String.valueOf(minutos)+":"+String.valueOf(segundos);
+          ingreso.setTiempoTotal(Time.valueOf(total));
                 System.out.println(hours);
                 System.out.println(minutos);
+                
+           ingreso.ingresarSalida();
+                
+                
                 System.out.println(segundos);
                 
              //   System.out.println(prueba);

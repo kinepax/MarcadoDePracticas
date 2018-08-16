@@ -17,9 +17,9 @@ public class dIngresoDatos {
     public Date diaHoy;
     public Time horaEntrada;
     public Time horaSalida;
-    public Time tiempoTotal;
-    public int idIngresado;
-    
+    public Time tiempoTotal;    
+    public int lastInsertedId;
+
     public dIngresoDatos(Date diaHoy, Time horaEntrada, Time horaSalida, Time tiempoTotal) {
         this.diaHoy = diaHoy;
         this.horaEntrada = horaEntrada;
@@ -80,8 +80,8 @@ public class dIngresoDatos {
             
                 if (resultado != null) {
                    if (resultado.next()) {
-                       idIngresado=resultado.getInt(1);
-                       System.out.println(idIngresado);
+                        lastInsertedId=resultado.getInt(1);
+                       System.out.println(lastInsertedId);
                     }
                     resultado.close();
                 }
@@ -98,7 +98,9 @@ public class dIngresoDatos {
         
     }
     
-    public void ingresarSalida(){
+    
+    
+     public void ingresarSalida(){
         
                ConexionBd con = new ConexionBd();
             Connection conexion = con.conexion();
@@ -108,9 +110,9 @@ public class dIngresoDatos {
             CallableStatement sp= conexion.prepareCall("CALL spInsertarSalida(?,?,?)");
             
            
-           sp.setTime(1, horaEntrada);
+           sp.setTime(1, horaSalida);
            sp.setTime(2, tiempoTotal);
-           sp.setInt(3, idIngresado);
+           sp.setInt(3, lastInsertedId);
            sp.execute();
           // Statement stmt = conexion.createStatement();       
             
@@ -125,6 +127,9 @@ public class dIngresoDatos {
             //Comentario
         }
     }
+    
+    
+    
     
     
     
