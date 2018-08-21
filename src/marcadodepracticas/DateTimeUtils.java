@@ -12,6 +12,16 @@ import java.time.LocalDate; //Para la fecha Actual
 
 public class DateTimeUtils {
 
+    public static LocalTime getInitialTime() {
+        return initialTime;
+    }
+
+    public static LocalTime getFinalTime() {
+        return finalTime;
+    }
+
+
+
 public static LocalTime initialTime;
 public static LocalTime finalTime;
 
@@ -20,7 +30,7 @@ public static LocalDate diadehoy;
 dIngresoDatos ingreso = new dIngresoDatos();
 
     
-    
+
     public static void main(String[] args) {
 		//LocalDateTime today = LocalDateTime.now();
 		//System.out.println("Current DateTime="+today);
@@ -60,25 +70,29 @@ dIngresoDatos ingreso = new dIngresoDatos();
         System.out.println(finalTime);
         ingreso.setHoraSalida(Time.valueOf(finalTime));
         
-          int hours = (int) ChronoUnit.HOURS.between(finalTime, initialTime);
+          int hours = ((int) ChronoUnit.HOURS.between(initialTime, finalTime));
           //La diferencia de horas entre el final y el inicial
-          int minutos= (int) ChronoUnit.MINUTES.between(finalTime, initialTime);
+          int minutos= ((int) ChronoUnit.MINUTES.between(initialTime, finalTime));
           //La diferencia de Minutos de la hora final a la hora inicial
-          int segundos= (int) ChronoUnit.SECONDS.between(initialTime, finalTime);
+          int segundos= ((int) ChronoUnit.SECONDS.between(initialTime, finalTime));
           //La diferencia de segundos hora inicial y final
           // Termina impriendo en pantalla
-          String total=String.valueOf(hours)+":"+String.valueOf(minutos)+":"+String.valueOf(segundos);
+          String total="00"+":"+String.valueOf(minutos)+":"+"00";
           ingreso.setTiempoTotal(Time.valueOf(total));
-                System.out.println(hours);
+                //System.out.println(hours);
                 System.out.println(minutos);
                 
-           ingreso.ingresarSalida();
+           
                 
                 
-                System.out.println(segundos);
-                
+                //System.out.println(segundos);
+                ingreso.ingresarSalida();
              //   System.out.println(prueba);
           
+    }
+    public LocalDate fechaHoy(){
+        LocalDate e = LocalDate.now();
+       return e; 
     }
 
 

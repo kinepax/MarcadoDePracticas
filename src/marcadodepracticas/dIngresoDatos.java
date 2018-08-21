@@ -69,7 +69,8 @@ public class dIngresoDatos {
         try {
             
            //Se invoca el procedimiento almacenado
-            CallableStatement sp= conexion.prepareCall("CALL spInsertarFechaEntrada(?,?)");
+            CallableStatement sp= 
+                    conexion.prepareCall("CALL spInsertarFechaEntrada(?,?)");
             
            sp.setDate(1, diaHoy);
            sp.setTime(2, horaEntrada);
